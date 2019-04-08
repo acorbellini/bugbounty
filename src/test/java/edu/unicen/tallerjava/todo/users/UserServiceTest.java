@@ -61,6 +61,11 @@ public class UserServiceTest {
 
         Mockito.when(repoUser.findAll()).then((el) -> savedUsers);
 
+        Mockito.doAnswer((el) -> {
+            savedUsers.clear();
+            return null;
+        }).when(repoUser).deleteAll();
+
         Mockito.when(repoUser.findFirstByOrderByIdDesc()).then((el) -> Optional.of(savedUsers.get(savedUsers.size() - 1)));
 
         for (User user : users) {
@@ -107,7 +112,7 @@ public class UserServiceTest {
     @Test
     public void testAddUsersAndClear() throws Exception {
         for (int i = 0; i < 2000; i++) {
-            for (int j = 0; j < 1000; j++) {
+            for (int j = 0; j < 10000; j++) {
                 userService.addUser(new User("Test", i * j));
             }
             userService.clearUsers();
