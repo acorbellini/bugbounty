@@ -36,7 +36,7 @@ public class TodoService {
     }
 
     public void delete(UUID id) {
-        repo.delete(id);
+        repo.deleteById(id);
     }
 
     /**

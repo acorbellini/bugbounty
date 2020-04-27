@@ -43,7 +43,7 @@ export class LoginComponent {
 
     public checkUser(user:User): void{
       this.user = user;
-      if (this.user.id) {
+      if (this.user && this.user.id != null) {
           this.router.navigate(["/todos"]);
       }
     }
