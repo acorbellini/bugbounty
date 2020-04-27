@@ -2,13 +2,11 @@ package edu.unicen.tallerjava.todo.users;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import java.util.UUID;
 
 @Entity
 public class User {
     @Id
-    private
-    Integer id;
+    private Integer id;
 
     private String name;
 

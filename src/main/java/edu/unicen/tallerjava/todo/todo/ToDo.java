@@ -3,11 +3,11 @@ package edu.unicen.tallerjava.todo.todo;
 import java.util.Date;
 import java.util.UUID;
 
-import edu.unicen.tallerjava.todo.users.User;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+
+import edu.unicen.tallerjava.todo.users.User;
 
 /**
  * La entidad ToDo a guardar en la base de datos.
@@ -15,8 +15,7 @@ import javax.persistence.ManyToOne;
 @Entity
 public class ToDo {
     @Id
-    private
-    UUID id;
+    private UUID id;
     @ManyToOne
     private User user;
     private String content;
@@ -82,7 +81,8 @@ public class ToDo {
         ToDo other = (ToDo) obj;
         if (id == null) {
             return other.id == null;
-        } else return id.equals(other.id);
+        } else
+            return id.equals(other.id);
     }
 
 }
