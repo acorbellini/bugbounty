@@ -12,7 +12,11 @@
       TO-DO
     </button>
     <hr />
-    <div class="card card-default" *ngFor="let todo of todos">
+    <div
+      class="card card-default"
+      *ngFor="let todo of todos"
+      style="margin-bottom: 1rem;"
+    >
       <div class="card-body" style="background-color: #ffe15b;">
         <div class="row">
           <div class="col-sm-10">{{ todo.content }}</div>
