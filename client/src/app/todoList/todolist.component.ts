@@ -1,16 +1,15 @@
-import { Component, AfterViewChecked  } from '@angular/core';
-import { UserService } from '../users/users.service';
-import { TodoService } from './todo.service';
-import { Todo } from './todo';
-import { User } from '../users/user';
+import { AfterViewChecked, Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { NgForm } from '@angular/forms';
+import { User } from '../users/user';
+import { UserService } from '../users/users.service';
+import { Todo } from './todo';
+import { TodoService } from './todo.service';
 
 declare var jQuery: any;
 
 @Component({
     selector: 'todo-list',
-    templateUrl: 'src/todoList/todoList.component.html',
+    templateUrl: './todolist.component.html',
     providers: [TodoService, UserService]
 })
 

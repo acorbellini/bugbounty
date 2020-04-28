@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { UserService } from '../users/users.service';
-import { User } from '../users/user';
+import { UserService } from './users.service';
+import { User } from './user';
 
 @Component({
   selector: 'users',

@@ -41,16 +41,8 @@ public class UserServiceTest {
         userService.setLogSvc(this.logService);
 
         savedUsers = new ArrayList<>();
-        users = new User[]{
-                new User("Alejandro", 1),
-                new User("Lucía", 2),
-                new User("Juan", 3),
-                new User("María", 4),
-                new User("Marcelo", 5),
-                new User("Antonela", 6),
-                new User("Sebastián", 7),
-                new User("Carolina", 8),
-        };
+        users = new User[] { new User("Alejandro", 1), new User("Lucía", 2), new User("Juan", 3), new User("María", 4),
+                new User("Marcelo", 5), new User("Antonela", 6), new User("Sebastián", 7), new User("Carolina", 8), };
 
         Mockito.when(repoUser.save(Mockito.any(User.class))).then((el) -> {
             synchronized (savedUsers) {
@@ -66,7 +58,8 @@ public class UserServiceTest {
             return null;
         }).when(repoUser).deleteAll();
 
-        Mockito.when(repoUser.findFirstByOrderByIdDesc()).then((el) -> Optional.of(savedUsers.get(savedUsers.size() - 1)));
+        Mockito.when(repoUser.findFirstByOrderByIdDesc())
+                .then((el) -> Optional.of(savedUsers.get(savedUsers.size() - 1)));
 
         for (User user : users) {
             userService.addUser(user);
@@ -86,7 +79,7 @@ public class UserServiceTest {
     }
 
     @Test
-    public void testCheckForNull() {
+    public void testAddNullUser() {
         try {
             userService.addUser(null);
         } catch (IllegalArgumentException e) {
@@ -95,7 +88,8 @@ public class UserServiceTest {
     }
 
     /**
-     * Realiza el login de 3 usuarios y se asegura de que tengan los ids correspondientes.
+     * Realiza el login de 3 usuarios y se asegura de que tengan los ids
+     * correspondientes.
      */
     @Test
     public void testLoginUser() {
@@ -120,7 +114,7 @@ public class UserServiceTest {
             long currentMemory = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
             // Chequear que no se pase de aprox. 500MB de RAM.
             if (currentMemory > 1000 * 1000 * 500)
-                throw new Exception("Demasiada Memoria.");
+                throw new Exception("Demasiada Memoria: " + currentMemory / 1024 + " mb");
         }
     }
 }

@@ -37,7 +37,7 @@ public class CurrentUserTest {
 	 * @throws InterruptedException
 	 */
 	@Test
-	public void checkCurrent() throws InterruptedException {
+	public void testCurrentConcurrent() throws InterruptedException {
 		for (int i = 0; i < 10000; i++) {
 			// En este caso creamos una instancia separada para crear uno nuevo
 			// en cada iteración
