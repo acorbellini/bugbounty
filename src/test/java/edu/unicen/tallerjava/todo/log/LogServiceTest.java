@@ -36,7 +36,8 @@ public class LogServiceTest {
     }
 
     /**
-     * Agrega todos los eventos al log y chequea que coincida el tamaño de los eventos con los logs almacenados.
+     * Agrega todos los eventos al log y chequea que coincida el tamaño de los
+     * eventos con los logs almacenados.
      */
     @Test
     public void addLogs() {
@@ -46,10 +47,11 @@ public class LogServiceTest {
     }
 
     /**
-     * Agrega todos los eventos, igual que addLogs, pero esta vez lo hace dividiendo la lista en 2 y
-     * agregando cada mitad desde un thread distinto.
+     * Agrega todos los eventos, igual que addLogs, pero esta vez lo hace dividiendo
+     * la lista en 2 y agregando cada mitad desde un thread distinto.
      *
-     * @throws InterruptedException Excepción de interrupción del Thread. Se agrega para evitar poner try-catch.
+     * @throws InterruptedException Excepción de interrupción del Thread. Se agrega
+     *                              para evitar poner try-catch.
      */
     @Test
     public void hasAllLogsConcurrent() throws InterruptedException {
@@ -76,5 +78,18 @@ public class LogServiceTest {
         List<String> actions = logs.stream().map(Log::getAction).collect(Collectors.toList());
         assertEquals(events.length, actions.size());
         assertTrue(actions.containsAll(Arrays.asList(events)));
+    }
+
+    @Test
+    public void getLogsByUser() {
+        User usertest = new User("admin");
+        User usertest2 = new User("admin");
+        User usertest3 = new User("test");
+        svc.addLog("test1", usertest);
+        svc.addLog("test2", usertest2);
+        svc.addLog("test3", usertest3);
+        assertEquals(2, svc.getUserLogs(usertest).size());
+        assertEquals(2, svc.getUserLogs(usertest2).size());
+        assertEquals(1, svc.getUserLogs(usertest3).size());
     }
 }

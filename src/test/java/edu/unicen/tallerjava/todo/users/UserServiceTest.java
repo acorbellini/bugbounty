@@ -103,10 +103,10 @@ public class UserServiceTest {
         assertTrue(c.getId().equals(11));
     }
 
-    @Test
+    @Test()
     public void testAddUsersAndClear() throws Exception {
-        for (int i = 0; i < 2000; i++) {
-            for (int j = 0; j < 10000; j++) {
+        for (int i = 0; i < 100; i++) {
+            for (int j = 0; j < 5000; j++) {
                 userService.addUser(new User("Test", i * j));
             }
             userService.clearUsers();
