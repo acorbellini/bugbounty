@@ -112,8 +112,8 @@ public class UserServiceTest {
             userService.clearUsers();
 
             long currentMemory = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
-            // Chequear que no se pase de aprox. 500MB de RAM.
-            if (currentMemory > 1000 * 1000 * 500)
+            // Chequear que no se pase de aprox. 400MB de RAM.
+            if (currentMemory > 1000 * 1000 * 400)
                 throw new Exception("Demasiada Memoria: " + currentMemory / 1024 + " mb");
         }
     }
